@@ -19,6 +19,14 @@ Use the `hook` helper to define your data attribute:
 <div class='arnt-i-pretty' data-test={{hook 'foo'}}>bar</div>
 ```
 
+Or the `testHook` attribute in your component:
+
+```js
+export default Ember.Component.extend({
+  testHook: 'foo'
+});
+```
+
 Then in your tests:
 
 ```js

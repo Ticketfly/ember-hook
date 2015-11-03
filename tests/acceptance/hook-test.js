@@ -19,5 +19,7 @@ test('visiting /', function(assert) {
   andThen(() => {
     assert.equal($(hook('title')).text().trim(), 'Ember Hook');
     assert.equal($hook('title').text().trim(), 'Ember Hook');
+
+    assert.equal($hook('component-hook').text().trim(), 'Component');
   });
 });
