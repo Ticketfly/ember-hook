@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/Ticketfly/ember-hook.svg?branch=master)](https://travis-ci.org/Ticketfly/ember-hook)
+[![Code Climate](https://codeclimate.com/github/Ticketfly/ember-hook/badges/gpa.svg)](https://codeclimate.com/github/Ticketfly/ember-hook)
+
 # ember-hook
 
 Way to go! You just completed a full and rigorous suite of acceptance tests for your Ember app! But wait, what is this? Your designers have overhauled the site, and now you need to update all your tests to reflect new class names? Well, #@!%!!!
