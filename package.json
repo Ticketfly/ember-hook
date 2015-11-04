@@ -1,6 +1,6 @@
 {
   "name": "ember-hook",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",
@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "https://github.com/Ticketfly/ember-hook",
   "engines": {
     "node": ">= 0.10.0"
   },
