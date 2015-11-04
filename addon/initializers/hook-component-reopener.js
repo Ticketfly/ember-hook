@@ -1,21 +1,25 @@
 import Ember from 'ember';
 import returnWhenTesting from 'ember-hook/utils/return-when-testing';
+import getAppConfig from 'ember-hook/utils/get-app-config';
 
 const {
   computed,
-  Component
+  Component,
+  get
 } = Ember;
+
+const config = getAppConfig();
+const hookName = get(config, 'emberHook.hookName') || 'hook';
 
 export function initialize() {
   Component.reopen({
-    attributeBindings: ['_testHook:data-test'],
+    attributeBindings: ['_hookName:data-test'],
 
-    _testHook: computed('testHook', 'forceHook', {
+    _hookName: computed(hookName, {
       get() {
-        const config = this.container.lookupFactory('config:environment');
-        const { testHook, forceHook } = this.getProperties('testHook', 'forceHook');
+        const hook = this.get(hookName);
         
-        return returnWhenTesting(config, testHook, forceHook);
+        return returnWhenTesting(config, hook);
       }
     }).readOnly()
   });
