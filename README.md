@@ -54,4 +54,10 @@ If you're unit testing your components, `ember-hook` won't be able to access you
 const component = this.subject({ forceHook: true });
 ```
 
+The above will force the component's hook to render. If you want to force a hook inside your component, you can pass `true` in as a second argument to the `hook` helper:
+
+```hbs
+<div class='arnt-i-pretty' data-test={{hook 'foo' forceHook}}>bar</div>
+```
+
 Note that this will eventually be depricated as the Ember community transitions to using integration tests for their components.
