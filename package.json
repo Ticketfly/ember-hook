@@ -1,7 +1,7 @@
 {
   "name": "ember-hook",
-  "version": "0.0.1",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.2",
+  "description": "Yerrr tests be brittle, mattie!!!",
   "directories": {
     "doc": "doc",
     "test": "tests"
