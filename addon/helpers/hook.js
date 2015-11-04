@@ -5,8 +5,9 @@ const { Helper } = Ember;
 
 export default Helper.extend({
   compute(params) {
+    const [hookName, forceHook] = params;
     const config = this.container.lookupFactory('config:environment');
 
-    return returnWhenTesting(config, params[0]);
+    return returnWhenTesting(config, hookName, forceHook);
   }
 });
