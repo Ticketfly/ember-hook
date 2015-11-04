@@ -45,3 +45,13 @@ test('my hooks work', function(assert) {
 `hook` returns a string such as `[data-test="foo"]`, while `$hook` returns an actual jquery object.
 
 Note that if you want to use `hook` or `$hook`, you need to name your data attribute `data-test`.
+
+### Unit Tests
+
+If you're unit testing your components, `ember-hook` won't be able to access your app's `config/environment` and determine whether or not you're running a test. In this case, you can force hook to activate:
+
+```js
+const component = this.subject({ forceHook: true });
+```
+
+Note that this will eventually be depricated as the Ember community transitions to using integration tests for their components.
