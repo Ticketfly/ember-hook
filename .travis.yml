@@ -1,35 +1,35 @@
----
 language: node_js
 node_js:
-  - "0.12"
-
+- '0.12'
 sudo: false
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 env:
-  - EMBER_TRY_SCENARIO=default
-  - EMBER_TRY_SCENARIO=ember-1.13.8
-  - EMBER_TRY_SCENARIO=ember-release
-  - EMBER_TRY_SCENARIO=ember-beta
-  - EMBER_TRY_SCENARIO=ember-canary
-
+- EMBER_TRY_SCENARIO=default
+- EMBER_TRY_SCENARIO=ember-1.13.8
+- EMBER_TRY_SCENARIO=ember-release
+- EMBER_TRY_SCENARIO=ember-beta
+- EMBER_TRY_SCENARIO=ember-canary
 matrix:
   fast_finish: true
   allow_failures:
-    - env: EMBER_TRY_SCENARIO=ember-canary
-
+  - env: EMBER_TRY_SCENARIO=ember-canary
 before_install:
-  - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
-  - "npm config set spin false"
-  - "npm install -g npm@^2"
-
+- export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
+- npm config set spin false
+- npm install -g npm@^2
 install:
-  - npm install -g bower
-  - npm install
-  - bower install
-
+- npm install -g bower
+- npm install
+- bower install
 script:
-  - ember try $EMBER_TRY_SCENARIO test
+- ember try $EMBER_TRY_SCENARIO test
+deploy:
+  provider: npm
+  email: null@midnight.agency
+  api_key:
+    secure: irhi64orSPHa2n9+gHnjn5Q8Y12nPiI6AdTsFQVIJXWY9qO4eLZofQQwTCwMKHZwKYEfgNJMbLDs7nlGvfUWm+UIFojY1ECcAdw5SM/9HVq6UXhdYtwW1Z/Y40hU9VVadGK3Uo4LTzIqhDE3VxkztVkPNaM/mBpq4tG0tyZQQPfoen0XqXSddv2Za4MBPuzY5Pq/43A4u1UkR+ItBchuY9v88Ktc4OLUfP0GC3fxJt1Db16figFQbahRBeJhV3RF5w3IAk72WEtFlsQE4uAaqSFLpoTUnfe0xLFexs/r/KpZzxXd10ZBUzu/WcLnJTphlshw8GTN1ywST68dCL+qEPYv7+UAx6nRkAJiSOJI3+J8G4mDLybWONCYj4wmfIAI7dWavNfJfS7QhQoooW/jw5RGE12fCcDfvnewOJhQKuhWwKUisHBPQU2VKO/7QxTTTqjnhLWrC+XsTUtTEMVOomKOdGVXK59G0aZ+CZ00oVL121zi8IPvd5iQbjNgRDoNX0dGWHkKVDlJzn+IbUE804xET0c9HdK88WEeKqk1O2UMeE0nTLw6T9kusliA094X4oS6UaDBXAVoRJvjSy8SWEpX0RjRDfkLZiqqna+0wpeycXaGP3kUtCwoVsrkwGZd80B6Xm+VsNMq2cw8ECfcBRhA9EdxbwGvWqKjCpME0wQ=
+  on:
+    tags: true
+    repo: Ticketfly/ember-hook

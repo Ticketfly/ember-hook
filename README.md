@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/ember-hook.svg)](https://badge.fury.io/js/ember-hook)
 [![Build Status](https://travis-ci.org/Ticketfly/ember-hook.svg?branch=master)](https://travis-ci.org/Ticketfly/ember-hook)
 [![Code Climate](https://codeclimate.com/github/Ticketfly/ember-hook/badges/gpa.svg)](https://codeclimate.com/github/Ticketfly/ember-hook)
 
@@ -36,7 +37,7 @@ import { hook, $hook } from 'ember-hook';
 
 test('my hooks work', function(assert) {
   assert.equal($hook('foo'), 'bar'); // works
-  assert.equal($(hook('foo')), 'bar'); // also works
+  assert.equal(find(hook('foo')), 'bar'); // also works
 });
 ```
 
