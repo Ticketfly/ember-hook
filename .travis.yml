@@ -25,6 +25,11 @@ install:
 - bower install
 script:
 - ember try $EMBER_TRY_SCENARIO test
+addons:
+  code_climate:
+    repo_token: c77f89b85d69e49f95f19f2a06a6fdf919e40de238f9fbdad454d94bbb3388f4
+after_script:
+- codeclimate-test-reporter < lcov.info
 deploy:
   provider: npm
   email: null@midnight.agency

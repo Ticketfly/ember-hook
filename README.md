@@ -1,6 +1,7 @@
 [![npm version](https://badge.fury.io/js/ember-hook.svg)](https://badge.fury.io/js/ember-hook)
 [![Build Status](https://travis-ci.org/Ticketfly/ember-hook.svg?branch=master)](https://travis-ci.org/Ticketfly/ember-hook)
 [![Code Climate](https://codeclimate.com/github/Ticketfly/ember-hook/badges/gpa.svg)](https://codeclimate.com/github/Ticketfly/ember-hook)
+[![Test Coverage](https://codeclimate.com/github/Ticketfly/ember-hook/badges/coverage.svg)](https://codeclimate.com/github/Ticketfly/ember-hook/coverage)
 
 # ember-hook
 
