@@ -21,11 +21,11 @@ Use the `hook` helper to define your data attribute:
 <div class='arnt-i-pretty' data-test={{hook 'foo'}}>bar</div>
 ```
 
-Or the `testHook` attribute in your component:
+Or the `hook` attribute in your component:
 
 ```js
 export default Ember.Component.extend({
-  testHook: 'foo'
+  hook: 'foo'
 });
 ```
 
@@ -46,12 +46,16 @@ test('my hooks work', function(assert) {
 
 Note that if you want to use `hook` or `$hook`, you need to name your data attribute `data-test`.
 
-### Unit Tests
+### Changing Component Hook
 
-If you're unit testing your components, `ember-hook` won't be able to access your app's `config/environment` and determine whether or not you're running a test. In this case, you can force hook to activate:
+If there's a conflict with the property `hook` on your components, you can change the property name in your `config/environment` file:
 
 ```js
-const component = this.subject({ forceHook: true });
-```
+// config/environment.js
 
-Note that this will eventually be depricated as the Ember community transitions to using integration tests for their components.
+var ENV ={
+  emberHook: {
+    hookName: 'customHookName'
+  }
+}
+```
