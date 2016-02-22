@@ -24,7 +24,9 @@ Use the `hook` helper to define your data attribute:
 Or the `hook` attribute in your component:
 
 ```js
-export default Ember.Component.extend({
+import { HookMixin } from 'ember-hook';
+
+export default Ember.Component.extend(HookMixin, {
   hook: 'foo'
 });
 ```

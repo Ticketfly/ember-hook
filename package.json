@@ -1,6 +1,6 @@
 {
   "name": "ember-hook",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Yerrr tests be brittle, mattie!!!",
   "directories": {
     "doc": "doc",
@@ -32,10 +32,11 @@
     "ember-cli-release": "0.2.3",
     "ember-cli-sri": "^1.0.3",
     "ember-cli-uglify": "^1.2.0",
-    "ember-data": "2.0.0",
+    "ember-data": "2.1.0",
     "ember-disable-prototype-extensions": "^1.0.0",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.3",
+    "ember-get-config": "0.0.2",
     "ember-try": "0.0.6"
   },
   "keywords": [

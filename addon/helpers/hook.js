@@ -1,9 +1,8 @@
 import Ember from 'ember';
+import config from 'ember-get-config';
 import returnWhenTesting from 'ember-hook/utils/return-when-testing';
-import getAppConfig from 'ember-hook/utils/get-app-config';
 
 const { Helper } = Ember;
-const config = getAppConfig();
 
 export default Helper.extend({
   compute(params) {
