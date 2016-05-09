@@ -24,9 +24,7 @@ Use the `hook` helper to define your data attribute:
 Or the `hook` attribute in your component:
 
 ```js
-import { HookMixin } from 'ember-hook';
-
-export default Ember.Component.extend(HookMixin, {
+export default Ember.Component.extend({
   hook: 'foo'
 });
 ```
@@ -34,7 +32,15 @@ export default Ember.Component.extend(HookMixin, {
 Then in your tests:
 
 ```js
-import { hook, $hook } from 'ember-hook';
+import { initialize, hook, $hook } from 'ember-hook';
+
+moduleForComponent('my component', 'Integration | Component | my component', {
+  integration: true,
+
+  beforeEach() {
+    initialize();
+  }
+});
 
 . . . .
 

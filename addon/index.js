@@ -1,8 +1,10 @@
-import { hook, $hook } from './test-helpers/hook';
 import HookMixin from './mixins/hook';
+import { hook, $hook } from './test-helpers/hook';
+import { initialize } from './initializers/ember-hook/initialize';
 
 export {
-  hook,
+  HookMixin,
   $hook,
-  HookMixin
+  hook,
+  initialize
 };
