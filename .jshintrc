@@ -2,7 +2,6 @@
   "predef": [
     "document",
     "window",
-    "requirejs",
     "-Promise"
   ],
   "browser": true,
