@@ -32,15 +32,7 @@ export default Ember.Component.extend({
 Then in your tests:
 
 ```js
-import { initialize, hook, $hook } from 'ember-hook';
-
-moduleForComponent('my component', 'Integration | Component | my component', {
-  integration: true,
-
-  beforeEach() {
-    initialize();
-  }
-});
+import { hook, $hook } from 'ember-hook';
 
 . . . .
 
@@ -52,7 +44,22 @@ test('my hooks work', function(assert) {
 
 `hook` returns a string such as `[data-test="foo"]`, while `$hook` returns an actual jquery object.
 
-Note that if you want to use `hook` or `$hook`, you need to name your data attribute `data-test`.
+### `initialize`
+
+`ember-hook` works out-of-the-box with acceptance tests, but component integration tests present a problem: they do not run initializers. This includes the `ember-hook` initializer that allows you to use the `hook` attribute on a component. To fix this, you'll need to manually run the initializer in your component test:
+
+
+```js
+import { initialize } from 'ember-hook';
+
+moduleForComponent('my component', 'Integration | Component | my component', {
+  integration: true,
+
+  beforeEach() {
+    initialize();
+  }
+});
+```
 
 ### Changing Component Hook
 
