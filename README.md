@@ -7,7 +7,7 @@
 
 Way to go! You just completed a full and rigorous suite of acceptance tests for your Ember app! But wait, what is this? Your designers have overhauled the site, and now you need to update all your tests to reflect new class names? Well, #@!%!!!
 
-Enter `ember-hook`. Rather than coupling your tests to fickle class names, it lets you use stable data attributes. Better yet, these attributes only appear when you're running your tests, keeping your source code trim and simple in production.
+Enter `ember-hook`. Rather than coupling your tests to fickle class names, it lets you use stable data attributes. Better yet, these attributes only appear when you're running your tests, keeping your source trim and simple in production.
 
 ## Installation
 
@@ -18,7 +18,7 @@ Enter `ember-hook`. Rather than coupling your tests to fickle class names, it le
 Use the `hook` helper to define your data attribute:
 
 ```hbs
-<div class='arnt-i-pretty' data-test={{hook 'foo'}}>bar</div>
+<div class="arnt-i-pretty" data-test={{hook "foo"}}>bar</div>
 ```
 
 Or the `hook` attribute in your component:
@@ -37,12 +37,38 @@ import { hook, $hook } from 'ember-hook';
 . . . .
 
 test('my hooks work', function(assert) {
-  assert.equal($hook('foo'), 'bar'); // works
-  assert.equal(find(hook('foo')), 'bar'); // also works
+  assert.equal($hook('foo').text().trim(), 'bar'); // works
+  assert.equal(find(hook('foo')).text().trim(), 'bar'); // also works
 });
 ```
 
 `hook` returns a string such as `[data-test="foo"]`, while `$hook` returns an actual jquery object.
+
+### Qualifiers
+
+Class names aren't the only fickle thing about the DOM. The DOM itself is fickle. You might be tempted to scour a parent for a child element like this:
+
+```js
+find(`${hook('item')}:nth(2)`);
+```
+
+But if that child element moves somewhere else in the DOM, you're in trouble. So `ember-hook` provides some tools for decoupling your hooks from the DOM structure itself. Just pass some named params into the `hook` helper:
+
+```hbs
+{{#each parentArray as |childArray containerIndex|}}
+  {{#each childArray as |item index|}}
+    <div data-test={{hook "item" index=index containerIndex=containerIndex}}>{{item}}</div>
+  {{/each}}
+{{/each}}
+```
+
+And then in your tests:
+
+```js
+$hook('item', { index: 2, containerIndex: someVariable }); // grabs a very specific 'item'
+$hook('item', { containerIndex: 5 }); // grabs all 'items' contained by the 5th parent
+$hook('item'); // grabs all items
+```
 
 ### `initialize`
 
@@ -71,6 +97,20 @@ If there's a conflict with the property `hook` on your components, you can chang
 var ENV ={
   emberHook: {
     hookName: 'customHookName'
+  }
+}
+```
+
+### Changing the Delimiter
+
+`ember-hook` delimits qualifiers by prepending the string '&^%^&' to each. If this happens to conflict with something your code, you can change it in the config as well:
+
+```js
+// config/environment.js
+
+var ENV ={
+  emberHook: {
+    delimiter: '¯\_(0)_/¯'
   }
 }
 ```

@@ -1,0 +1,5 @@
+{{#each alphabet as |group groupIndex|}}
+  {{#each group as |letter index|}}
+    <div data-test={{hook "letter" index=index groupIndex=groupIndex}}>{{letter}}</div>
+  {{/each}}
+{{/each}}
