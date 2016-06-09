@@ -14,6 +14,8 @@ module('Acceptance | hook', {
 });
 
 test('visiting /', function(assert) {
+  assert.expect(6);
+
   visit('/');
 
   andThen(() => {
@@ -21,5 +23,9 @@ test('visiting /', function(assert) {
     assert.equal($hook('title').text().trim(), 'Ember Hook');
 
     assert.equal($hook('component-hook').text().trim(), 'Component');
+
+    assert.equal($hook('letter').length, 5, 'gathers all instances when no qualifiers are provided');
+    assert.equal($hook('letter', { groupIndex: 0 }).length, 2, 'gathers all instances that satisfy the qualifier');
+    assert.equal($hook('letter', { index: 1, groupIndex: 1 }).text().trim(), 'D', 'gathers the instance that satisfies multiple qualifiers');
   });
 });
