@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import { initialize } from 'ember-hook';
 import { module, test } from 'qunit';
+import delimiter from 'ember-hook/utils/delimiter';
 
 var registry, application;
 
@@ -23,5 +24,5 @@ test('applies the `HookMixin` to `Component`', function(assert) {
   const component = Component.create({ hook: 'foo' });
 
   assert.deepEqual(component.get('attributeBindings'), ['ariaRole:role', '_hookName:data-test'], 'adds _hookName to the attributeBindings');
-  assert.equal(component.get('_hookName'), 'foo', 'adds the _hookName computed');
+  assert.equal(component.get('_hookName'), `foo${delimiter}`, 'adds the _hookName computed');
 });

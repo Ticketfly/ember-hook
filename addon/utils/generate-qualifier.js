@@ -1,10 +1,5 @@
-import Ember from 'ember';
-import config from 'ember-get-config';
-
-const { get } = Ember;
-
-const delimiter = get(config, 'emberHook.delimiter') || '&^%^&';
+import delimit from 'ember-hook/utils/delimit';
 
 export default function generateQualifier(object, key) {
-  return `${delimiter}${key}=${object[key]}`;
+  return delimit(`${key}=${object[key]}`);
 }
