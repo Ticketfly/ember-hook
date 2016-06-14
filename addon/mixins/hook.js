@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import config from 'ember-get-config';
+import delimit from 'ember-hook/utils/delimit';
 import returnWhenTesting from 'ember-hook/utils/return-when-testing';
 
 const {
@@ -17,7 +18,7 @@ export default Mixin.create({
     get() {
       const hook = get(this, hookName);
 
-      return returnWhenTesting(config, hook);
+      return returnWhenTesting(config, delimit(hook));
     }
   }).readOnly()
 });
