@@ -1,5 +1,11 @@
+import Ember from 'ember';
+
+const { get } = Ember;
+
 export default function returnWhenTesting(config, value) {
-  if (config.environment === 'test') {
+  const enabled = get(config, 'emberHook.enabled');
+
+  if (typeof enabled === 'boolean' ? enabled : config.environment === 'test') {
     return value;
   }
 }
