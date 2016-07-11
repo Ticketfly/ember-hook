@@ -114,3 +114,31 @@ var ENV ={
   }
 }
 ```
+
+### Enabling ember-hook outside of the test environment
+
+`ember-hook` by default is only enabled when the environment is `test`.  If you need to force ember-hook to be enabled in other environments, or always on, you can use `enabled`.
+
+```js
+// config/environment.js
+
+var ENV ={
+  emberHook: {
+    enabled: true
+  }
+}
+```
+
+```js
+// config/environment.js
+module.exports = function(environment) {
+  var ENV ={
+    emberHook: {
+      // only enable in test or production builds
+      enabled: environment === 'production'
+    }
+  }
+
+  // ...
+}
+```
