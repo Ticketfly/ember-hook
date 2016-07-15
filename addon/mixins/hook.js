@@ -17,8 +17,10 @@ export default Mixin.create({
   _hookName: computed(hookName, {
     get() {
       const hook = get(this, hookName);
-
-      return returnWhenTesting(config, delimit(hook));
+      
+      if (hook) {
+        return returnWhenTesting(config, delimit(hook));
+      }
     }
   }).readOnly()
 });
