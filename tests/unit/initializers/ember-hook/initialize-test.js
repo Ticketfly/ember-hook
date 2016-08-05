@@ -21,8 +21,8 @@ test('applies the `HookMixin` to `Component`', function(assert) {
   initialize();
 
   const { Component } = Ember;
-  const component = Component.create({ hook: 'foo' });
+  const component = Component.create({ hook: 'foo', hookQualifiers: { index: 3 } });
 
   assert.ok(component.get('attributeBindings').indexOf('_hookName:data-test') > -1, 'adds _hookName to the attributeBindings');
-  assert.equal(component.get('_hookName'), `foo${delimiter}`, 'adds the _hookName computed');
+  assert.equal(component.get('_hookName'), `foo${delimiter}index=3${delimiter}`, 'adds the _hookName computed');
 });

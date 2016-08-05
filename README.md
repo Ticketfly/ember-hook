@@ -58,6 +58,8 @@ But if that child element moves somewhere else in the DOM, you're in trouble. So
 {{#each parentArray as |childArray containerIndex|}}
   {{#each childArray as |item index|}}
     <div data-test={{hook "item" index=index containerIndex=containerIndex}}>{{item}}</div>
+    {{!-- or --}}
+    {{my-component hook="item" hookQualifiers=(hash index=index containerIndex=containerIndex)}}
   {{/each}}
 {{/each}}
 ```
@@ -97,6 +99,20 @@ If there's a conflict with the property `hook` on your components, you can chang
 var ENV ={
   emberHook: {
     hookName: 'customHookName'
+  }
+}
+```
+
+### Changing Component Hook Qualifier
+
+If there's a conflict with the property `hookQualifiers` on your components, you can change the property name in your `config/environment` file:
+
+```js
+// config/environment.js
+
+var ENV ={
+  emberHook: {
+    hookQualifierName: 'customHookQualifierName'
   }
 }
 ```
