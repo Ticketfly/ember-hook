@@ -1,6 +1,8 @@
 <h2 id="title" data-test={{hook "title"}}>Ember Hook</h2>
 
 {{test-component hook="component-hook" text="Component"}}
+{{test-component hook="component-hook" hookQualifiers=(hash index=1) text="Component 2"}}
+{{test-component hook="component-hook" hookQualifiers=(hash index=2) text="Component 3"}}
 
 {{alphabet-component}}
 
