@@ -3,4 +3,10 @@ import config from 'ember-get-config';
 
 const { get } = Ember;
 
-export default get(config, 'emberHook.delimiter') || '&^%^&';
+let delimiter = get(config, 'emberHook.delimiter');
+
+if (typeof delimiter === 'undefined') {
+  delimiter = '&^%^&';
+}
+
+export default delimiter;
