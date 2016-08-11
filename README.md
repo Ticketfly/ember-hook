@@ -119,7 +119,7 @@ var ENV ={
 
 ### Changing the Delimiter
 
-`ember-hook` delimits qualifiers by prepending the string '&^%^&' to each. If this happens to conflict with something your code, you can change it in the config as well:
+`ember-hook` delimits qualifiers by appending the string '&^%^&' to each. If this happens to conflict with something your code, you can change it in the config as well:
 
 ```js
 // config/environment.js
