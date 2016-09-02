@@ -14,7 +14,13 @@ const hookName = get(config, 'emberHook.hookName') || 'hook';
 const hookQualifierName = get(config, 'emberHook.hookQualifierName') || 'hookQualifiers';
 
 export default Mixin.create({
-  attributeBindings: ['_hookName:data-test'],
+  init() {
+    if (get(this, 'tagName')) {
+      this.attributeBindings.push('_hookName:data-test');
+    }
+
+    this._super(...arguments);
+  },
 
   _hookName: computed(hookName, hookQualifierName, {
     get() {
