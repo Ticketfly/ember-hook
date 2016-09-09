@@ -6,7 +6,8 @@ import returnWhenTesting from 'ember-hook/utils/return-when-testing';
 const {
   Mixin,
   computed,
-  get
+  get,
+  set
 } = Ember;
 
 const hookName = get(config, 'emberHook.hookName') || 'hook';
@@ -14,9 +15,17 @@ const hookName = get(config, 'emberHook.hookName') || 'hook';
 export default Mixin.create({
   init() {
     this._super(...arguments);
-
+  
     if (this.tagName || this.renderer._destinedForDOM) {
-      this.attributeBindings.push('_hookName:data-test');
+      let attrs = [];
+      let bindings = get(this, 'attributeBindings');
+  
+      if (Array.isArray(bindings)) {
+        attrs = attrs.concat(bindings);
+      }
+
+      attrs.push('_hookName:data-test');
+      set(this, 'attributeBindings', attrs);
     }
   },
 
