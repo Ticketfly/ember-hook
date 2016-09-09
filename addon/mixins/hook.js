@@ -16,7 +16,7 @@ export default Mixin.create({
   init() {
     this._super(...arguments);
   
-    if (this.tagName || this.renderer._destinedForDOM) {
+    if (this.tagName) {
       let attrs = [];
       let bindings = get(this, 'attributeBindings');
   
