@@ -17,15 +17,15 @@ export default Mixin.create({
     this._super(...arguments);
   
     if (this.tagName || this.elementId) {
-      let attrs = [];
+      let newAttributeBindings = [];
       let bindings = get(this, 'attributeBindings');
   
       if (Array.isArray(bindings)) {
-        attrs = attrs.concat(bindings);
+        newAttributeBindings = newAttributeBindings.concat(bindings);
       }
 
-      attrs.push('_hookName:data-test');
-      set(this, 'attributeBindings', attrs);
+      newAttributeBindings.push('_hookName:data-test');
+      set(this, 'attributeBindings', newAttributeBindings);
     }
   },
 
