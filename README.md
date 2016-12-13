@@ -71,6 +71,27 @@ $hook('item', { containerIndex: 5 }); // grabs all 'items' contained by the 5th 
 $hook('item'); // grabs all items
 ```
 
+### Extending
+Sometimes, you may want to extend `hookQualifiers` from a parent when passing it to a child. For instance, in the case above, the outer `{{#each}}` might be in one component, and the inner `{{#each}}` might be in a child.
+In that case, the child can extend the parent's `hookQualifiers` adding on the `index` property. This is assuming that the child was given a `hookQualifiers` property
+```hbs
+{{#each childArray as |item index|}}
+  <div data-test={{hook "item" (extend hookQualifiers index=index)}}>{{item}}</div>
+  {{!-- or --}}
+  {{my-component hook="item" hookQualifiers=(extend hookQualifiers index=index)}}
+{{/each}}
+```
+
+In order for this to work, you'll need an `extend` helper, which doesn't exist natively in `Ember` but is very simple to add to your project:
+```js
+import Ember from 'ember';
+const { Helper, assign } = Ember;
+export function extend ([original], newProps) {
+  return assign({}, original, newProps);
+}
+export default Helper.helper(extend);
+```
+
 ### `initialize`
 
 `ember-hook` works out-of-the-box with acceptance tests, but component integration tests present a problem: they do not run initializers. This includes the `ember-hook` initializer that allows you to use the `hook` attribute on a component. To fix this, you'll need to manually run the initializer in your component test:
