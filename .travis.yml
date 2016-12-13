@@ -7,11 +7,11 @@ sudo: false
 
 cache:
   directories:
-    - node_modules
+    - $HOME/.npm
+    - $HOME/.cache # includes bowers cache
 
 env:
-  - EMBER_TRY_SCENARIO=default
-  - EMBER_TRY_SCENARIO=ember-1.13
+  - EMBER_TRY_SCENARIO=ember-lts-2.8
   - EMBER_TRY_SCENARIO=ember-release
   - EMBER_TRY_SCENARIO=ember-beta
   - EMBER_TRY_SCENARIO=ember-canary
@@ -39,8 +39,6 @@ script:
 addons:
   code_climate:
     repo_token: c77f89b85d69e49f95f19f2a06a6fdf919e40de238f9fbdad454d94bbb3388f4
-after_script:
-  - codeclimate-test-reporter < lcov.info
 deploy:
   provider: npm
   email: null@midnight.agency
