@@ -1,6 +1,6 @@
 {
   "name": "ember-hook",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Yerrr tests be brittle, mattie!!!",
   "keywords": [
     "ember-addon"
@@ -19,7 +19,7 @@
   "repository": "https://github.com/Ticketfly/ember-hook",
   "dependencies": {
     "ember-cli-babel": "^5.1.7",
-    "ember-get-config": "^0.1.11"
+    "ember-get-config": "^0.2.0"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
