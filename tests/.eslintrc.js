@@ -1,6 +1,7 @@
 /* eslint-env node */
-'use strict';
 
 module.exports = {
-  name: 'ember-hook'
+  env: {
+    embertest: true
+  }
 };

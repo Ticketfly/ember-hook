@@ -15,6 +15,7 @@ module('Acceptance | hook', {
 
 test('visiting /', function(assert) {
   assert.expect(9);
+  const { $ } = Ember;
 
   visit('/');
 
