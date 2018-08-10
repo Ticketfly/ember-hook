@@ -17,7 +17,7 @@ const hookQualifierName = get(config, 'emberHook.hookQualifierName') || 'hookQua
 export default Mixin.create({
   init() {
     this._super(...arguments);
-    if (this.tagName) {
+    if (this.tagName !== '') {
       let newAttributeBindings = [];
       let bindings = get(this, 'attributeBindings');
   
